@@ -1,24 +1,22 @@
+'use client'
 import { useState } from 'react'
 import { InfoWrapper, PostItemWrapper, Thumbnail, VoteButton } from '@/components/PostItem/styles'
+import { PostItemProps } from '@/components/PostItem/types'
 
-// TODO! Props
-// TODO! Ellipsis (no wrap!)
-export const PostItem = ({}) => {
+export const PostItem = ({ name, tagline, votesCount, thumbnail }: PostItemProps) => {
   // TODO! Hasvoted action?
   const [hasVoted, setHasVoted] = useState<boolean>(false)
 
   return (
     <PostItemWrapper>
-      <Thumbnail
-        src={'https://ph-files.imgix.net/4bb79a58-baab-4434-af76-985ca67ed467.png?auto=format'}
-      />
+      <Thumbnail src={thumbnail} />
       <InfoWrapper>
-        <span>Uizard</span>
-        <p>Transform your blah blah</p>
+        <span>{name}</span>
+        <p>{tagline}</p>
       </InfoWrapper>
       <VoteButton hasVoted={hasVoted} onClick={() => setHasVoted((prev) => !prev)}>
         <span>⮝</span>
-        <span>123</span>
+        <span>{hasVoted ? votesCount + 1 : votesCount}</span>
       </VoteButton>
     </PostItemWrapper>
   )
