@@ -3,6 +3,7 @@ import { PaginationObserver } from '@/components/PaginationObserver'
 
 // TODO! Fix overflow?
 export const ListWrapper = styled.div`
+  position: relative;
   overflow-y: scroll;
   max-height: 660px;
 
@@ -15,3 +16,5 @@ export const ItemsWrapper = styled(PaginationObserver)`
   padding: 1rem 0.7rem;
   gap: 0.7rem;
 `
+
+export const LoadingIndicator = styled.div``

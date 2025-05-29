@@ -4,3 +4,7 @@ export type PostItemProps = {
   votesCount: number
   thumbnail: string
 }
+
+export type SkeletonPostProps = {
+  index?: number
+}

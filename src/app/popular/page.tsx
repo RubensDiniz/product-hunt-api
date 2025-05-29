@@ -2,7 +2,7 @@
 import { useQuery } from '@apollo/client'
 import { GET_POSTS, GetPostsData, Post } from '@/graphql'
 import { PostList } from '@/components/PostList'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Popular = () => {
   const [cursor, setCursor] = useState<string | null>(null)
@@ -47,9 +47,14 @@ const Popular = () => {
       })
   }
 
-  if (isInitialLoading) return <p>Loading...</p>
-
-  return <PostList posts={allPosts} loading={isInitialLoading} onEndOfList={loadNextPage} />
+  return (
+    <PostList
+      posts={allPosts}
+      isInitialLoading={isInitialLoading}
+      onEndOfList={loadNextPage}
+      isLoadingMore={isFetchingMore}
+    />
+  )
 }
 
 export default Popular

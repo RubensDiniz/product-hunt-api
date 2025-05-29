@@ -20,13 +20,10 @@ export const PaginationObserver = ({
       ([entry]) => {
         if (disabled) return
 
-        // TODO! Remove console logs...
         if (entry.isIntersecting && !intersectingRef.current) {
-          console.log('entered')
           intersectingRef.current = true
           onEndOfList()
         } else if (!entry.isIntersecting && intersectingRef.current) {
-          console.log('left')
           intersectingRef.current = false
         }
       },

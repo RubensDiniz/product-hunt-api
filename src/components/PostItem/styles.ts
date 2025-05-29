@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
+import { makeSkeletonBackgroundAnimation } from '@/utils'
+import { css } from '@emotion/react'
+import { SkeletonPostProps } from '@/components/PostItem/types'
 
 export const PostItemWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 1rem 3rem 1rem 0.7rem;
+  padding: 1rem 2.5rem 1rem 0.7rem;
 
   width: calc(100% - 0.8rem);
 
@@ -15,20 +18,44 @@ export const PostItemWrapper = styled.div`
   cursor: pointer;
 `
 
+export const SkeletonPostWrapper = styled.div<SkeletonPostProps>`
+  position: relative;
+  width: calc(100% - 0.8rem);
+  height: 68px;
+
+  border-radius: 0.7rem;
+  background-color: white;
+
+  animation: ${({ index }) =>
+    index !== undefined
+      ? css`
+          ${makeSkeletonBackgroundAnimation('white', 'ghostwhite')} 3s ease infinite
+        `
+      : 'none'};
+  animation-delay: ${({ index }) => (index ? `${0.1 * index}s` : 0)};
+
+  > div {
+    animation: ${({ index }) =>
+      index !== undefined
+        ? css`
+            ${makeSkeletonBackgroundAnimation('white', 'ghostwhite')} 3s ease infinite
+          `
+        : 'none'};
+    animation-delay: ${({ index }) => (index ? `${0.1 * index}s` : 0)};
+  }
+`
+
 export const Thumbnail = styled.img`
   height: 2.857rem;
   aspect-ratio: 1;
   border-radius: 0.3rem;
 `
 
-// TODO! Fix text ellipsis
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 
   > span {
     color: black;
@@ -38,6 +65,9 @@ export const InfoWrapper = styled.div`
     margin: 0;
     color: gray;
     font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `
 
@@ -69,4 +99,18 @@ export const VoteButton = styled.div<VoteButtonProps>`
 
   cursor: pointer;
   user-select: none;
+`
+
+export const SkeletonVoteButton = styled.div`
+  position: absolute;
+  top: calc(50% - 1.5rem);
+  right: -0.8rem;
+
+  height: 3rem;
+  width: 3rem;
+
+  border: solid 1px whitesmoke;
+  border-radius: 0.5rem;
+
+  background-color: white;
 `

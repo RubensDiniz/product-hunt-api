@@ -1,14 +1,27 @@
-'use client'
 import { PostListProps } from './types'
 import { ItemsWrapper, ListWrapper } from './styles'
-import { PostItem } from '@/components/PostItem'
+import { PostItem, SkeletonPost } from '@/components/PostItem'
 
-export const PostList = ({ posts, loading, onEndOfList }: PostListProps) => {
-  // TODO! Skeletons
+export const PostList = ({
+  posts,
+  onEndOfList,
+  isInitialLoading,
+  isLoadingMore,
+}: PostListProps) => {
+  if (isInitialLoading)
+    return (
+      <ListWrapper>
+        <ItemsWrapper onEndOfList={() => undefined}>
+          {Array.from({ length: 13 }, (_, index) => (
+            <SkeletonPost key={index} index={index} />
+          ))}
+        </ItemsWrapper>
+      </ListWrapper>
+    )
 
   return (
     <ListWrapper>
-      <ItemsWrapper onEndOfList={onEndOfList} offset={60}>
+      <ItemsWrapper onEndOfList={onEndOfList} offset={100}>
         {posts?.map(({ node }) => (
           <PostItem
             key={node.id}
@@ -18,6 +31,7 @@ export const PostList = ({ posts, loading, onEndOfList }: PostListProps) => {
             thumbnail={node.thumbnail.url}
           />
         ))}
+        {isLoadingMore && <div>LOADING...</div>}
       </ItemsWrapper>
     </ListWrapper>
   )

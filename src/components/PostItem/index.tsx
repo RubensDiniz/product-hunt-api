@@ -1,7 +1,14 @@
 'use client'
 import { useState } from 'react'
-import { InfoWrapper, PostItemWrapper, Thumbnail, VoteButton } from '@/components/PostItem/styles'
-import { PostItemProps } from '@/components/PostItem/types'
+import {
+  InfoWrapper,
+  SkeletonPostWrapper,
+  PostItemWrapper,
+  Thumbnail,
+  VoteButton,
+  SkeletonVoteButton,
+} from './styles'
+import { PostItemProps, SkeletonPostProps } from '@/components/PostItem/types'
 
 export const PostItem = ({ name, tagline, votesCount, thumbnail }: PostItemProps) => {
   // TODO! Hasvoted action?
@@ -21,3 +28,9 @@ export const PostItem = ({ name, tagline, votesCount, thumbnail }: PostItemProps
     </PostItemWrapper>
   )
 }
+
+export const SkeletonPost = ({ index }: SkeletonPostProps) => (
+  <SkeletonPostWrapper index={index}>
+    <SkeletonVoteButton />
+  </SkeletonPostWrapper>
+)
