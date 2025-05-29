@@ -21,7 +21,7 @@ export const PostList = ({
 
   return (
     <ListWrapper>
-      <ItemsWrapper onEndOfList={onEndOfList} offset={100}>
+      <ItemsWrapper onEndOfList={onEndOfList} offset={100} disabled={isLoadingMore}>
         {posts?.map(({ node }) => (
           <PostItem
             key={node.id}
@@ -31,7 +31,8 @@ export const PostList = ({
             thumbnail={node.thumbnail.url}
           />
         ))}
-        {isLoadingMore && <div>LOADING...</div>}
+        {isLoadingMore &&
+          Array.from({ length: 3 }, (_, index) => <SkeletonPost key={index} index={index} />)}
       </ItemsWrapper>
     </ListWrapper>
   )
