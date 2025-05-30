@@ -81,7 +81,7 @@ interface VoteButtonProps {
   hasVoted: boolean
 }
 
-export const VoteButton = styled.div<VoteButtonProps>`
+export const VoteButton = styled.button<VoteButtonProps>`
   position: absolute;
   top: calc(50% - 1.5rem);
   right: -0.8rem;
