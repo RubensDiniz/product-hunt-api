@@ -18,6 +18,7 @@ export const HeaderItem = styled(Link)`
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
+  line-height: normal;
 
   color: #70797b;
   border-bottom: solid 2px transparent;

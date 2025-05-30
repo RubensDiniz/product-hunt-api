@@ -4,14 +4,18 @@ import { css } from '@emotion/react'
 import { SkeletonPostProps } from '@/components/PostItem/types'
 import Link from 'next/link'
 
-export const PostItemWrapper = styled(Link)`
+export const PostItemContainer = styled.div`
   position: relative;
+  width: calc(100% - 0.8rem);
+`
+
+export const PostItemLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0.7rem;
   padding: 1rem 2.5rem 1rem 0.7rem;
 
-  width: calc(100% - 0.8rem);
+  width: 100%;
 
   border-radius: 0.7rem;
   background-color: white;
@@ -101,6 +105,9 @@ export const VoteButton = styled.div<VoteButtonProps>`
 
   cursor: pointer;
   user-select: none;
+  pointer-events: auto;
+
+  z-index: 10;
 `
 
 export const SkeletonVoteButton = styled.div`
