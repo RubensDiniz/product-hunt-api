@@ -12,7 +12,7 @@ export const PostList = ({
     return (
       <ListWrapper>
         <ItemsWrapper onEndOfList={() => undefined}>
-          {Array.from({ length: 13 }, (_, index) => (
+          {Array.from({ length: 12 }, (_, index) => (
             <SkeletonPost key={index} index={index} />
           ))}
         </ItemsWrapper>
@@ -21,10 +21,11 @@ export const PostList = ({
 
   return (
     <ListWrapper>
-      <ItemsWrapper onEndOfList={onEndOfList} offset={100} disabled={isLoadingMore}>
+      <ItemsWrapper onEndOfList={onEndOfList} offset={80} disabled={isLoadingMore}>
         {posts?.map(({ node }) => (
           <PostItem
-            key={node.id}
+            key={node.slug}
+            slug={node.slug}
             name={node.name}
             tagline={node.tagline}
             votesCount={node.votesCount}
@@ -32,7 +33,7 @@ export const PostList = ({
           />
         ))}
         {isLoadingMore &&
-          Array.from({ length: 3 }, (_, index) => <SkeletonPost key={index} index={index} />)}
+          Array.from({ length: 12 }, (_, index) => <SkeletonPost key={index} index={index} />)}
       </ItemsWrapper>
     </ListWrapper>
   )

@@ -2,8 +2,9 @@ import styled from '@emotion/styled'
 import { makeSkeletonBackgroundAnimation } from '@/utils'
 import { css } from '@emotion/react'
 import { SkeletonPostProps } from '@/components/PostItem/types'
+import Link from 'next/link'
 
-export const PostItemWrapper = styled.div`
+export const PostItemWrapper = styled(Link)`
   position: relative;
   display: flex;
   align-items: center;
@@ -21,7 +22,7 @@ export const PostItemWrapper = styled.div`
 export const SkeletonPostWrapper = styled.div<SkeletonPostProps>`
   position: relative;
   width: calc(100% - 0.8rem);
-  height: 68px;
+  height: 4.857rem;
 
   border-radius: 0.7rem;
   background-color: white;
@@ -58,6 +59,7 @@ export const InfoWrapper = styled.div`
   overflow: hidden;
 
   > span {
+    font-weight: bold;
     color: black;
   }
 

@@ -1,4 +1,5 @@
 export type PostItemProps = {
+  slug: string
   name: string
   tagline: string
   votesCount: number

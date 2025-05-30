@@ -4,7 +4,7 @@ import { PaginationObserver } from '@/components/PaginationObserver'
 // TODO! Fix height/overflow?
 export const ListWrapper = styled.div`
   max-height: 660px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   background-color: #f3f5f7;
 `

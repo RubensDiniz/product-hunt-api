@@ -5,7 +5,7 @@ export const GET_POSTS = gql`
     posts(order: $order, first: 12, after: $after) {
       edges {
         node {
-          id
+          slug
           name
           tagline
           votesCount

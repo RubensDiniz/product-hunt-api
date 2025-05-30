@@ -1,7 +1,7 @@
-import { Post } from '@/graphql'
+import { ListPost } from '@/graphql'
 
 export type PostListProps = {
-  posts: { node: Post }[]
+  posts: { node: ListPost }[]
   onEndOfList: () => void
   isInitialLoading?: boolean
   isLoadingMore?: boolean

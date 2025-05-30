@@ -1,4 +1,3 @@
-
 export type ProductPageParams = {
-  id: string
+  slug: string
 }

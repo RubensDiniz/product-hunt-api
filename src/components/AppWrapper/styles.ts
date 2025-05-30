@@ -7,10 +7,8 @@ export const ScreenWrapper = styled.div`
   height: 100vh;
 `
 
-// TODO! Review height
 export const ChildrenContainer = styled.div`
   width: 100%;
   max-width: 400px;
-  max-height: 800px;
   overflow: hidden;
 `

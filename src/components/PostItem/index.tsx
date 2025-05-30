@@ -9,13 +9,13 @@ import {
 } from './styles'
 import { PostItemProps, SkeletonPostProps } from '@/components/PostItem/types'
 
-export const PostItem = ({ name, tagline, votesCount, thumbnail }: PostItemProps) => {
+export const PostItem = ({ slug, name, tagline, votesCount, thumbnail }: PostItemProps) => {
   // TODO! Hasvoted action?
   const [hasVoted, setHasVoted] = useState<boolean>(false)
 
   return (
-    <PostItemWrapper>
-      <Thumbnail src={thumbnail} />
+    <PostItemWrapper href={`/product/${slug}`}>
+      <Thumbnail src={thumbnail} alt="Thumbnail" />
       <InfoWrapper>
         <span>{name}</span>
         <p>{tagline}</p>

@@ -1,4 +1,5 @@
 export * from './apolloClient'
 export * from './queries/posts'
+export * from './queries/post'
 
-export type { Post, GetPostsData } from './types'
+export type { ListPost, GetPostsData } from './types'

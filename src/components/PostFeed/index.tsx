@@ -1,21 +1,21 @@
-'use client'
-import { useQuery } from '@apollo/client'
-import { GET_POSTS, GetPostsData, Post } from '@/graphql'
-import { PostList } from '@/components/PostList'
+import { PostFeedProps } from '@/components/PostFeed/types'
 import { useEffect, useState } from 'react'
+import { GET_POSTS, GetPostsData, ListPost } from '@/graphql'
+import { useQuery } from '@apollo/client'
+import { PostList } from '@/components/PostList'
 
-const Popular = () => {
+export const PostFeed = ({ order }: PostFeedProps) => {
   const [cursor, setCursor] = useState<string | null>(null)
-  const [allPosts, setAllPosts] = useState<{ node: Post }[]>([])
+  const [allPosts, setAllPosts] = useState<{ node: ListPost }[]>([])
   const [isFetchingMore, setIsFetchingMore] = useState<boolean>(false)
 
   const {
     data,
     loading: isInitialLoading,
-    error,
     fetchMore,
   } = useQuery<GetPostsData>(GET_POSTS, {
-    variables: { order: 'VOTES', after: null }, // or 'NEWEST', 'FEATURED'
+    variables: { order, after: null },
+    fetchPolicy: 'cache-and-network',
   })
 
   useEffect(() => {
@@ -23,28 +23,22 @@ const Popular = () => {
       setAllPosts(data.posts.edges)
       setCursor(data.posts.pageInfo.endCursor ?? null)
     }
-  }, [data, allPosts.length])
+  }, [data?.posts?.edges, data?.posts?.pageInfo.endCursor, allPosts.length])
 
   const loadNextPage = () => {
     if (!data?.posts?.pageInfo?.hasNextPage || !cursor) return
 
     setIsFetchingMore(true)
     fetchMore({
-      variables: {
-        order: 'VOTES',
-        after: cursor,
-      },
+      variables: { order, after: cursor },
     })
       .then((res) => {
         const newEdges = res.data.posts.edges
         const newCursor = res.data.posts.pageInfo.endCursor
-
         setAllPosts((prev) => [...prev, ...newEdges])
         setCursor(newCursor ?? null)
       })
-      .finally(() => {
-        setIsFetchingMore(false)
-      })
+      .finally(() => setIsFetchingMore(false))
   }
 
   return (
@@ -56,5 +50,3 @@ const Popular = () => {
     />
   )
 }
-
-export default Popular
