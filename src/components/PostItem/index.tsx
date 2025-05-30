@@ -11,7 +11,6 @@ import {
 import { PostItemProps, SkeletonPostProps } from '@/components/PostItem/types'
 
 export const PostItem = ({ slug, name, tagline, votesCount, thumbnail }: PostItemProps) => {
-  // TODO! Hasvoted action?
   const [hasVoted, setHasVoted] = useState<boolean>(false)
 
   return (

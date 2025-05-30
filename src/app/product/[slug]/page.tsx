@@ -23,6 +23,7 @@ const Product = () => {
 
   const [hasVoted, setHasVoted] = useState<boolean>(false)
 
+  // TODO! Use loading?
   const { data, loading } = useQuery<GetPostBySlugData, GetPostBySlugVariables>(GET_POST_BY_SLUG, {
     variables: { slug: params['slug'] },
   })
