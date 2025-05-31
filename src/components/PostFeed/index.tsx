@@ -15,7 +15,7 @@ export const PostFeed = ({ order }: PostFeedProps) => {
     fetchMore,
   } = useQuery<GetPostsData>(GET_POSTS, {
     variables: { order, after: null },
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
   })
 
   useEffect(() => {

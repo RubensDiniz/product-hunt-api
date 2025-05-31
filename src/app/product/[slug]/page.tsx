@@ -25,6 +25,7 @@ const Product = () => {
 
   const { data, loading } = useQuery<GetPostBySlugData, GetPostBySlugVariables>(GET_POST_BY_SLUG, {
     variables: { slug: params['slug'] },
+    fetchPolicy: 'cache-first',
   })
 
   return (
