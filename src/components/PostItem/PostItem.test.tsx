@@ -19,7 +19,7 @@ describe('PostItem', () => {
     expect(screen.getByText(String(mockProps.votesCount))).toBeInTheDocument()
   })
 
-  it('has a link to the product page', () => {
+  it('has a link to the specific product page', () => {
     render(<PostItem {...mockProps} />)
 
     const link = screen.getByRole('link')
@@ -31,21 +31,24 @@ describe('PostItem', () => {
 
     const voteButton = screen.getByRole('button')
 
-    // First click: should increase
+    // First click
     fireEvent.click(voteButton)
     expect(screen.getByText(String(mockProps.votesCount + 1))).toBeInTheDocument()
 
-    // Second click: should revert
+    // Second click
     fireEvent.click(voteButton)
     expect(screen.getByText(String(mockProps.votesCount))).toBeInTheDocument()
   })
 
-  it('applies the hasVoted prop to the VoteButton when clicked', () => {
+  it('applies the "voted" styles to the VoteButton when clicked', () => {
     render(<PostItem {...mockProps} />)
 
     const voteButton = screen.getByRole('button')
 
     fireEvent.click(voteButton)
-    expect(voteButton).toHaveAttribute('hasvoted', 'true')
+    expect(voteButton).toHaveStyle({
+      backgroundColor: 'd9572e',
+      color: 'rgb(255, 255, 255)',
+    })
   })
 })
