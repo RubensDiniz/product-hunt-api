@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { PaginationObserver } from '@/components/PaginationObserver'
 
-// TODO! Fix height/overflow?
 export const ListWrapper = styled.div`
   max-height: 660px;
   overflow-y: auto;

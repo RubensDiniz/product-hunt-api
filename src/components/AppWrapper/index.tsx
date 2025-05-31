@@ -12,7 +12,6 @@ export const emotionCache = createCache({
   prepend: true,
 })
 
-// TODO! Unit testing...
 export const AppWrapper = ({ children }: { children: ReactNode }) => (
   <CacheProvider value={emotionCache}>
     <ApolloProvider client={client}>

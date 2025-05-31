@@ -33,7 +33,7 @@ export const PostItem = ({ slug, name, tagline, votesCount, thumbnail }: PostIte
 }
 
 export const SkeletonPost = ({ index }: SkeletonPostProps) => (
-  <SkeletonPostWrapper index={index}>
+  <SkeletonPostWrapper index={index} data-testid="skeleton-post">
     <SkeletonVoteButton />
   </SkeletonPostWrapper>
 )
