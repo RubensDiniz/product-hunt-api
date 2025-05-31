@@ -66,7 +66,7 @@ describe('PostFeed', () => {
       </MockedProvider>
     )
 
-    expect(await screen.findAllByTestId('skeleton-post')).toHaveLength(12)
+    expect(await screen.findAllByTestId('skeleton-post')).toHaveLength(15)
   })
 
   it('renders posts after loading', async () => {
